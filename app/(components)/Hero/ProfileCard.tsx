@@ -1,7 +1,6 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
-import React, { useState } from "react";
 import { LiquidGlassCard } from '@/app/(ui-layouts)/LiquidGlassCard';
 
 interface ProfileCardProps {
@@ -22,13 +21,8 @@ const ProfileCard = ({
   title = "Software Engineer",
   handle = "safugit",
   status = "Online",
-  contactText = "Visit Github",
   showUserInfo = true,
-  enableTilt = true,
-  onContactClick,
 }: ProfileCardProps) => {
-  const [isHovered] = useState(false);
-
   return (
     <div className="relative w-full max-w-sm aspect-[0.7] rounded-3xl transition-all duration-500 ease-out glow-primary">
       <LiquidGlassCard
@@ -82,17 +76,6 @@ const ProfileCard = ({
                   </span>
                   <span className="text-xs text-text-muted">{status}</span>
                 </div>
-
-                <button
-                  onClick={onContactClick}
-                  className="w-full py-3 px-6 rounded-xl font-light text-main transition-all duration-300 cursor-pointer"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #84cc16, #a3e635)",
-                  }}
-                >
-                  {contactText}
-                </button>
               </div>
             )}
           </div>
