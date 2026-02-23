@@ -1,7 +1,8 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
+import { LiquidGlassCard } from '@/app/(ui-layouts)/LiquidGlassCard';
 
 interface ProfileCardProps {
   avatarUrl?: string;
@@ -26,87 +27,22 @@ const ProfileCard = ({
   enableTilt = true,
   onContactClick,
 }: ProfileCardProps) => {
-  const cardRef = useRef<HTMLDivElement | null>(null);
-
-  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!enableTilt || !cardRef.current) return;
-
-    const rect = cardRef.current.getBoundingClientRect();
-
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-    setMousePosition({ x, y });
-  };
-
-  const handleMouseEnter = () => setIsHovered(true);
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setMousePosition({ x: 50, y: 50 });
-  };
-
-  useEffect(() => {
-    if (!cardRef.current || !enableTilt) return;
-
-    const card = cardRef.current;
-
-    const rotateX = ((mousePosition.y - 50) / 50) * -8;
-    const rotateY = ((mousePosition.x - 50) / 50) * 8;
-
-    if (isHovered) {
-      card.style.transform = `
-        perspective(1000px)
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
-        scale3d(1.05, 1.05, 1.05)
-      `;
-    } else {
-      card.style.transform = `
-        perspective(1000px)
-        rotateX(0deg)
-        rotateY(0deg)
-        scale3d(1, 1, 1)
-      `;
-    }
-  }, [mousePosition, isHovered, enableTilt]);
+  const [isHovered] = useState(false);
 
   return (
-    <div
-      ref={cardRef}
-      className="relative w-full max-w-sm aspect-[0.7] rounded-3xl transition-all duration-500 ease-out glow-primary"
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{ transformStyle: "preserve-3d" }}
-    >
-      {/* Background */}
-      <div
+    <div className="relative w-full max-w-sm aspect-[0.7] rounded-3xl transition-all duration-500 ease-out glow-primary">
+      <LiquidGlassCard
         className="absolute inset-0 rounded-3xl overflow-hidden"
-        style={{
-          background: `
-            radial-gradient(circle at 30% 20%, 
-              rgba(163, 230, 53, 0.08) 0%, 
-              rgba(132, 204, 22, 0.05) 25%,
-              transparent 50%
-            ),
-            linear-gradient(135deg, 
-              #131a24 0%, 
-              #0f172a 50%, 
-              #1e293b 100%
-            )
-          `,
-          boxShadow: isHovered
-            ? "0 0 60px rgba(163, 230, 53, 0.25), 0 25px 50px -12px rgba(0, 0, 0, 0.5)"
-            : "0 0 30px rgba(163, 230, 53, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.3)",
-          transition: "box-shadow 0.3s ease",
-        }}
+        shadowIntensity="sm"
+        borderRadius="24px"
+        glowIntensity="none"
       >
-        {/* Content */}
-        <div className="relative h-full flex flex-col items-center justify-between p-8">
+        <div
+          style={{
+            boxShadow: '0 0 30px rgba(163, 230, 53, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.3)'
+          }}
+          className="relative h-full flex flex-col items-center justify-between p-8"
+        >
           {/* Avatar */}
           <div className="flex-1 flex items-center justify-center w-full">
             <div style={{ transform: "translateZ(40px)" }}>
@@ -161,7 +97,7 @@ const ProfileCard = ({
             )}
           </div>
         </div>
-      </div>
+      </LiquidGlassCard>
     </div>
   );
 };
