@@ -7,7 +7,7 @@
   /* === Lime Glass (Main Theme) === */
 
   /* Base */
-  --color-main: #0f172a;
+  --color-main: #0b1220;
   --color-surface: #131a24;
 
   /* Primary Brand */
@@ -27,4 +27,17 @@
 
 .glow-primary {
   box-shadow: 0 0 40px rgba(163, 230, 53, 0.25);
+}
+
+body {
+  background: radial-gradient(
+    circle at 20% 20%,
+    rgba(163, 230, 53, 0.04),
+    transparent 40%
+  ),
+  linear-gradient(
+    180deg,
+    #0a0a0a,
+    #000000
+  );
 }
