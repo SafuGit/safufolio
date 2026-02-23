@@ -1,6 +1,7 @@
 "use client";
 import SectionTitle from "./util/SectionTitle";
 import MagicBento from "../(reactbits)/Bento";
+import Earth from "../(ui-layouts)/Globe";
 
 const Services = () => {
   return (
@@ -19,6 +20,9 @@ const Services = () => {
           particleCount={12}
           glowColor="163, 230, 53"
           disableAnimations={false}
+        />
+        <Earth
+          scale={2}
         />
       </div>
     </div>
