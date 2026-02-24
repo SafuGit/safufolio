@@ -7,10 +7,10 @@ export default function Home() {
   return (
     <div>
       <FollowCursor />
-      <FadeIn className="mb-12">
+      <FadeIn className="mb-24">
         <Hero />
       </FadeIn>
-      <FadeIn className="mb-12">
+      <FadeIn className="mb-24">
         <Services />
       </FadeIn>
     </div>
