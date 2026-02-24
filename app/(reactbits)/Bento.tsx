@@ -1,11 +1,13 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
+import { LucideIcon, Code, Smartphone, Palette, Database, Zap, Shield } from 'lucide-react';
 
 export interface BentoCardProps {
   color?: string;
   title?: string;
   description?: string;
   label?: string;
+  icon?: LucideIcon;
   textAutoHide?: boolean;
   disableAnimations?: boolean;
 }
@@ -32,39 +34,45 @@ const MOBILE_BREAKPOINT = 768;
 const cardData: BentoCardProps[] = [
   {
     color: '#060010',
-    title: 'Analytics',
-    description: 'Track user behavior',
-    label: 'Insights'
+    title: 'Web Development',
+    description: 'Modern, responsive websites built with cutting-edge technologies',
+    label: 'Frontend',
+    icon: Code
   },
   {
     color: '#060010',
-    title: 'Dashboard',
-    description: 'Centralized data view',
-    label: 'Overview'
+    title: 'App Development',
+    description: 'Native and cross-platform mobile applications',
+    label: 'Mobile',
+    icon: Smartphone
   },
   {
     color: '#060010',
-    title: 'Collaboration',
-    description: 'Work together seamlessly',
-    label: 'Teamwork'
+    title: 'UI/UX Design',
+    description: 'Beautiful, intuitive user interfaces and experiences',
+    label: 'Design',
+    icon: Palette
   },
   {
     color: '#060010',
-    title: 'Automation',
-    description: 'Streamline workflows',
-    label: 'Efficiency'
+    title: 'Backend Systems',
+    description: 'Scalable APIs and database architecture',
+    label: 'Backend',
+    icon: Database
   },
   {
     color: '#060010',
-    title: 'Integration',
-    description: 'Connect favorite tools',
-    label: 'Connectivity'
+    title: 'Performance',
+    description: 'Lightning-fast, optimized solutions',
+    label: 'Speed',
+    icon: Zap
   },
   {
     color: '#060010',
     title: 'Security',
-    description: 'Enterprise-grade protection',
-    label: 'Protection'
+    description: 'Enterprise-grade security and best practices',
+    label: 'Protection',
+    icon: Shield
   }
 ];
 
@@ -542,7 +550,7 @@ const MagicBento: React.FC<BentoProps> = ({
             --glow-intensity: 0;
             --glow-radius: 200px;
             --glow-color: ${glowColor};
-            --border-color: #392e4e;
+            --border-color: #84cc16;
             --background-dark: #060010;
             --white: hsl(0, 0%, 100%);
             --purple-primary: rgba(132, 0, 255, 1);
@@ -704,6 +712,7 @@ const MagicBento: React.FC<BentoProps> = ({
                 >
                   <div className="card__header flex justify-between gap-3 relative text-white">
                     <span className="card__label text-base">{card.label}</span>
+                    {card.icon && <card.icon className="w-6 h-6 opacity-70" />}
                   </div>
                   <div className="card__content flex flex-col relative text-white">
                     <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
@@ -836,6 +845,7 @@ const MagicBento: React.FC<BentoProps> = ({
               >
                 <div className="card__header flex justify-between gap-3 relative text-white">
                   <span className="card__label text-base">{card.label}</span>
+                  {card.icon && <card.icon className="w-6 h-6 opacity-70" />}
                 </div>
                 <div className="card__content flex flex-col relative text-white">
                   <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
