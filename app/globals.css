@@ -1,43 +1,5 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Typography */
-  --font-raleway: var(--font-raleway);
-
-  /* === Lime Glass (Main Theme) === */
-
-  /* Base */
-  --color-main: #0b1220;
-  --color-surface: #131a24;
-
-  /* Primary Brand */
-  --color-primary: #84cc16;
-  --color-accent: #a3e635;
-
-  /* Highlight (Use Sparingly) */
-  --color-highlight: #facc15;
-
-  /* Text */
-  --color-text: #f9fafb;
-  --color-text-muted: #9ca3af;
-
-  /* Border */
-  --color-border: rgba(255, 255, 255, 0.08);
-}
-
-.glow-primary {
-  box-shadow: 0 0 40px rgba(163, 230, 53, 0.25);
-}
-
-body {
-  background: radial-gradient(
-    circle at 20% 20%,
-    rgba(163, 230, 53, 0.04),
-    transparent 40%
-  ),
-  linear-gradient(
-    180deg,
-    #0a0a0a,
-    #000000
-  );
+  --font-poppins: var(--font-poppins);
 }
